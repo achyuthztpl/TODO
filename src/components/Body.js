@@ -1,8 +1,21 @@
 import {makeStyles} from '@material-ui/core/styles';
-import React from 'react';
+import React, {useState} from 'react';
 import SideBar from './SideBar';
+import MainBody from './MainBody';
 
 const useStyles = makeStyles({
+  '@global': {
+    'body': {
+      color: '#4a4a4a',
+    },
+    '.MuiOutlinedInput-notchedOutline': {
+      borderRadius: '4em',
+
+    },
+    '.MuiSvgIcon-colorPrimary': {
+      color: 'rgb(204, 204, 204)',
+    },
+  },
   root: {
     flex: '1 1 auto',
     display: 'flex',
@@ -31,20 +44,22 @@ const useStyles = makeStyles({
     width: '100%',
     backgroundColor: '#f6f6f6',
     zIndex: 9,
+    position: 'relative',
   },
 });
 
 function Body(props) {
   const classes = useStyles();
+  const [activeList, setActiveList] = useState(0);
   return (
       <div className={classes.root}>
         <div className={`${classes.sideBar} ${!props.navOpenStatus ?
             classes.sideBarOff :
             ''}`}>
-          <SideBar />
+          <SideBar activeList={activeList} setActiveList={setActiveList}/>
         </div>
         <div className={classes.main}>
-
+          <MainBody activeList={activeList}/>
         </div>
       </div>
   );
