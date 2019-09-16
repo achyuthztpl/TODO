@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import {CssBaseline} from '@material-ui/core';
+import NavBar from './components/NavBar';
+import Body from './components/Body';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      navOpenStatus: true,
+    };
+  }
+
+  onNavMenuClick = () => {
+    this.setState((oldState) => ({
+      navOpenStatus: !oldState.navOpenStatus,
+    }));
+  };
+
+  render() {
+
+    return (
+        <div style={{display: "flex", flexDirection: "column", height:"100%"}}>
+          <CssBaseline/>
+          <NavBar onNavMenuClick={this.onNavMenuClick}/>
+          <Body className={'Body'} navOpenStatus={this.state.navOpenStatus}/>
+        </div>
+    );
+  }
 }
 
 export default App;
