@@ -15,6 +15,13 @@ const useStyles = makeStyles({
     '.MuiSvgIcon-colorPrimary': {
       color: 'rgb(204, 204, 204)',
     },
+    ".MuiTypography-body1": {
+      display: "inline-block",
+      width: "100%",
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
+    }
   },
   root: {
     flex: '1 1 auto',

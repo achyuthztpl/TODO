@@ -9,8 +9,8 @@ import {
   ListItemSecondaryAction,
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/EditOutlined';
-import DeleteIcon from '@material-ui/icons/DeleteOutlined';
-import ClearIcon from '@material-ui/icons/Clear';
+  import DeleteIcon from '@material-ui/icons/DeleteOutlined';
+  import ClearIcon from '@material-ui/icons/Clear';
 import CheckIcon from '@material-ui/icons/Check';
 
 const useStyles = makeStyles({
@@ -72,6 +72,10 @@ const useStyles = makeStyles({
     },
     cursor: 'pointer',
   },
+  textTruncate: {
+    textOverflow: "ellipsis",
+  },
+
 });
 
 export default function SideBar(props) {
@@ -165,7 +169,7 @@ export default function SideBar(props) {
                            onClick={onListItemClick}
                            className={classes.listText}
                            classes={{selected: classes.selectedColor}}>
-                      <ListItemText primary={lists[key].label}/>
+                      <ListItemText primary={lists[key].label} classes={{primary: classes.textTruncate}}/>
                       <ListItemSecondaryAction className={classes.iconButton}>
                         {
                           edit &&

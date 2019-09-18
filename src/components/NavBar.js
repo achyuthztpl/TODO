@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -21,14 +21,18 @@ const styles = {
   grow: {
     flexGrow: 1,
   },
-  grey: {
+  menuIcon: {
     color: 'grey',
+    padding: "0px",
+    marginLeft: "12px",
+    marginRight: "12px",
   },
   add: {
     backgroundColor: '#0080ff',
     color: 'white',
     padding: '0 1.5em',
-    marginLeft: "1em"
+    marginLeft: "1em",
+    height: "36px",
   },
 };
 
@@ -42,7 +46,7 @@ function NavBar(props) {
         <AppBar position="static" className={classes.navBar}>
           <Toolbar style={{paddingTop: '1em', paddingBottom: '1em'}}>
             <IconButton edge="start" aria-label="menu"
-                        className={classes.grey} onClick={handleNavMenuClick}>
+                        className={classes.menuIcon} onClick={handleNavMenuClick}>
               <MenuIcon/>
             </IconButton>
             <Fab variant="extended" aria-label="Add" className={classes.add}>
