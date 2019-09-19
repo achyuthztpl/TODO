@@ -45,11 +45,11 @@ const useStyles = makeStyles({
       task: {
         marginBottom: '10px',
         '&:hover': {
-          borderColor: '#0080ff',
-          borderWidth: '1px',
-          borderStyle: 'solid',
-          padding: "7px 15px"
+          boxShadow: '0 0 0 1px #0080ff',
         },
+      },
+      taskOnClick: {
+        boxShadow: '0 0 0 1px #0080ff',
       },
       taskFinish: {
         borderColor: '#CCCCCC',
@@ -69,9 +69,7 @@ const useStyles = makeStyles({
         fontSize: '0.8em',
       },
       finisedTaskText: {
-        textDecoration: 'line-through',
         color: '#CCCCCC',
-        textDecorationStyle: 'solid',
         display: 'inline-block',
         width: '100%',
         position: 'relative',
@@ -92,6 +90,9 @@ export default function TasksBody(props) {
   const setTasks = props.setTasks;
   const tasks = props.tasks;
 
+  const onTaskClick = (event) => {
+    props.setActiveTask(event.currentTarget.id);
+  };
   const onAddingNewTask = (event) => {
     const isButton = event.currentTarget.id === 'NewTaskButton';
     const value = !isButton ?
@@ -99,18 +100,15 @@ export default function TasksBody(props) {
         document.getElementById('NewTaskInput').value;
     //console.log(value);
     if ((event.keyCode === 13 || isButton) && value) {
-      let tasks = ls.get('tasks');
-      if (!tasks)
-        tasks = [];
-      tasks.push({
+      props.setTaskToLocalStorage({
         listId,
         task: value,
         timestamp: (new Date()).getTime(),
         completed: false,
+        reminderTime: null,
+        notes: null,
       });
-      ls.set('tasks', tasks);
 
-      setTasks(tasks.filter(obj => listId != 0 ? obj.listId == listId : true));
       if (isButton)
         document.getElementById('NewTaskInput').value = '';
       else
@@ -119,6 +117,7 @@ export default function TasksBody(props) {
   };
 
   const onFinishedClick = (event) => {
+    event.stopPropagation();
     const timestamp = event.currentTarget.parentNode.id;
     let tasks = ls.get('tasks');
     if (!tasks)
@@ -134,6 +133,7 @@ export default function TasksBody(props) {
   };
 
   const onTaskRemoveClick = (event) => {
+    event.stopPropagation();
     const timestamp = event.currentTarget.parentNode.id;
     let tasks = ls.get('tasks');
     if (!tasks)
@@ -144,6 +144,8 @@ export default function TasksBody(props) {
     setTasks(tasks);
   };
 
+  /*  tasks.sort((obj1, obj2) => obj1.timestamp - obj2.timestamp);
+    tasks.sort((obj1, obj2) => obj1.completed - obj2.completed);*/
   return (
       <>
         <Card className={classes.card}>
@@ -154,11 +156,15 @@ export default function TasksBody(props) {
                 <p style={{textAlign: 'center'}}>No tasks yet.</p>
 
               }
-              {tasks.map(
-                  obj =>
-                      <ListItem id={obj.timestamp} className={classes.task}
-                                key={obj.timestamp}
-                                component={Paper}>
+              {tasks.slice()
+                  .sort((obj1, obj2) => obj1.timestamp - obj2.timestamp)
+                  .sort((obj1, obj2) => obj1.completed - obj2.completed)
+                  .map(
+                      obj =>
+                          <ListItem id={obj.timestamp} className={classes.task}
+                                    key={obj.timestamp}
+                                    component={Paper}
+                                    onClick={onTaskClick}>
                             <span className={classes.taskFinish} style={{
                               backgroundColor: obj.completed ? '' : 'white',
                             }} onClick={onFinishedClick}>
@@ -170,22 +176,23 @@ export default function TasksBody(props) {
                                          }}
                               />
                             </span>
-                        <ListItemText primary={obj.task}
-                                      classes={{
-                                        primary: obj.completed ?
-                                            classes.finisedTaskText :
-                                            '',
-                                      }}/>
-                        <span className={classes.taskFinish}
-                              onClick={onTaskRemoveClick}
-                              style={{
-                                marginRight: '0px',
-                                visibility: obj.completed ? '' : 'hidden',
-                              }}>
+                            <ListItemText primary={obj.task}
+                                          secondary={null}
+                                          classes={{
+                                            primary: obj.completed ?
+                                                classes.finisedTaskText :
+                                                '',
+                                          }}/>
+                            <span className={classes.taskFinish}
+                                  onClick={onTaskRemoveClick}
+                                  style={{
+                                    marginRight: '0px',
+                                    visibility: obj.completed ? '' : 'hidden',
+                                  }}>
                               <ClearIcon className={classes.taskFinishIcon}/>
                             </span>
-                      </ListItem>,
-              )}
+                          </ListItem>,
+                  )}
             </List>
           </CardContent>
           <CardActions className={classes.cardActions}>

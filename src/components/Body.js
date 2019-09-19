@@ -39,7 +39,8 @@ const useStyles = makeStyles({
     transitionTimingFunction: 'ease-out',
     transitionDuration: '.5s',
     opacity: 1,
-    width: '350px',
+    width: '250px',
+    minWidth: "250px",
     transform: 'none',
   },
   sideBarOff: {
