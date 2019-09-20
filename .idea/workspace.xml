@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7f361f9-38bf-40a4-b930-25a3050e46c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/TaskDate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Body.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Body.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TaskCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TaskCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TasksBody.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksBody.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,13 +29,18 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/heroku" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/heroku" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -67,6 +67,9 @@
       <workItem from="1568351950984" duration="167000" />
       <workItem from="1568352120389" duration="2934000" />
       <workItem from="1568358828694" duration="89263000" />
+      <workItem from="1568891558701" duration="241000" />
+      <workItem from="1568891825141" duration="34000" />
+      <workItem from="1568891877000" duration="2942000" />
     </task>
     <servers />
   </component>

@@ -45,8 +45,9 @@ const useStyles = makeStyles({
   },
   sideBarOff: {
     width: '0px',
+    minWidth: "0px",
     opacity: 0,
-    transform: 'translateX(-260px)',
+    transform: 'translateX(-250px)',
   },
   main: {
     width: '100%',
